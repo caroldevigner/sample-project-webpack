@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -9,11 +10,45 @@ const config = [
         context: path.resolve(__dirname, 'src'),
         entry: {
             app: './scripts/app.js',
+            custom: './scripts/custom.js',
         },
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: "js/[name].js",
             chunkFilename: 'js/[name].js',
+        },
+        optimization: {
+            runtimeChunk: 'single',
+            minimize: true,
+            minimizer: [
+                new TerserPlugin({
+                    terserOptions: {
+                        ecma: 5,
+                        keep_classnames: true,
+                        keep_fnames: true,
+                        module: true,
+                        toplevel: true,
+                        ie8: true,
+                        safari10: true,
+                        output: {
+                            beautify: true,
+                            webkit: true
+                        }
+                    },
+                    extractComments: 'all',
+                }),
+            ],
+            splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: Infinity,
+                minSize: 0,
+                cacheGroups: {
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors'
+                    },
+                },
+            },
         },
         devServer: {
             port: 3000,
