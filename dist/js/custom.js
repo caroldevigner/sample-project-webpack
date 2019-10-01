@@ -1,13 +1,13 @@
 /*! For license information please see custom.js.LICENSE */
 (window.webpackJsonp = window.webpackJsonp || []).push([ [ "custom" ], {
-    "./scripts/custom.js": function(s, o, c) {
+    "./scripts/custom.js": function(s, o, n) {
         (function(s) {
-            s(document).ready(() => {
-                console.log("Ready!"), c("./scripts/demo.js");
-            });
-        }).call(this, c("../node_modules/jquery/dist/jquery.js"));
+            s(document).ready((function() {
+                console.log("Ready!"), n("./scripts/demo.js");
+            }));
+        }).call(this, n("../node_modules/jquery/dist/jquery.js"));
     },
-    "./scripts/demo.js": function(s, o, c) {
+    "./scripts/demo.js": function(s, o, n) {
         console.log(1);
     }
 }, [ [ "./scripts/custom.js", "runtime", "vendors" ] ] ]);

@@ -1,8 +1,12 @@
+/***/
+
 /*!***************************!*\
   !*** ./scripts/custom.js ***!
   \***************************/
 
 /*! no static exports found */
+
+/* WEBPACK VAR INJECTION */
 
 /*! ./demo */
 

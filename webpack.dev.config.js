@@ -80,7 +80,6 @@ const config = [
                                         "@babel/preset-env",
                                         {
                                             "targets": {
-                                                "esmodules": true,
                                                 "browsers": ["last 2 versions", "ie >= 7"]
                                             }
                                         }
@@ -102,6 +101,39 @@ const config = [
                 images: path.resolve(__dirname, '../src/assets/images'), // Relative path of images
                 fonts: path.resolve(__dirname, '../src/assets/fonts'), // Relative path of fonts
             }
+        },
+    },
+    {
+        context: path.resolve(__dirname, 'src'),
+        entry: './stylesheet/app.scss',
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: "css/style-bundle.js",
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.scss$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: 'style.css',
+                            },
+                        },
+                        { loader: 'extract-loader' },
+                        { loader: 'css-loader' },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sassOptions: {
+                                    includePaths: ['./node_modules']
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         },
     }
 ];
