@@ -6,12 +6,10 @@
 
 /*! no exports provided */
 
-/* WEBPACK VAR INJECTION */
-
 /* harmony import */
 
 /*! @material/ripple/index */
 
 /*! @material/textfield */
 
-/*! jquery */
+//textField.valid = false;
