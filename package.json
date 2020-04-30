@@ -32,7 +32,7 @@
     "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "material-components-web": "^3.2.0",
     "normalize": "^0.3.1"
   }
